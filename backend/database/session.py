@@ -6,7 +6,7 @@ settings = get_settings()
 
 # SQLAlchemy connection string
 DATABASE_URL = (
-    f"mysql+mysqlconnector://{settings.DATABASE_USER}:{settings.DATABASE_PASSWORD}"
+    f"{settings.DATABASE_DRIVER}://{settings.DATABASE_USER}:{settings.DATABASE_PASSWORD}"
     f"@{settings.DATABASE_HOST}:{settings.DATABASE_PORT}/{settings.DATABASE_NAME}"
 )
 

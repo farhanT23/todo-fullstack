@@ -1,5 +1,3 @@
-
-
 from config.base import BaseSettings
 
 
