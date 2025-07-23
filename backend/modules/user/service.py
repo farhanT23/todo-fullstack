@@ -1,7 +1,7 @@
 import os
 from datetime import datetime, timezone
 import random
-from fastapi import HTTPException, UploadFile
+from fastapi import HTTPException, UploadFile, status
 from config import BASE_PATH
 from utils.hasher import Hasher
 from utils.jwt_token import JWTToken
@@ -55,6 +55,14 @@ class UserService:
         token = JWTToken.create_refresh_token(data)
 
         return token
+    
+    async def login_user(self, credentials: schema.UserLogin):
+        user = await self.get_user_by_email(credentials.email)
+
+        if not user or not Hasher.verify(credentials.password, user.password):
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect email or password")
+        
+        return user
     
 
     
