@@ -1,0 +1,5 @@
+venv/
+.env
+backend/app/__pycache__/main.cpython-312.pyc
+frontend/public/
+frontend/src/assets/react.svg
