@@ -19,7 +19,7 @@ class Todo(Base):
     description = Column(Text, nullable=True)
     is_completed = Column(Boolean, default=False)
     priority = Column(Enum(PriorityEnum), default=PriorityEnum.medium)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.now())
 
     # Foreign key relationship to user
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
