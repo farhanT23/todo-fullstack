@@ -56,9 +56,9 @@ async def get_all_todo(
 
     return todos
 
-@router.put("/update/{todo_id}", response_model=TodoUpdate, status_code=status.HTTP_200_OK)
+@router.put("/update/{todo_id}", response_model=TodoOut, status_code=status.HTTP_200_OK)
 async def update_todo(
-    request: Request,
+    todo_id: int,
     todo_up: TodoUpdate,
     current_user: dict = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
@@ -67,7 +67,8 @@ async def update_todo(
 
     todo = await service.update(
         user_id=current_user["user_id"],
-        todo=todo_up
+        todo_id=todo_id,
+        data=todo_up
     )
 
     return todo
