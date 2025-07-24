@@ -54,6 +54,18 @@ class TodoService:
         await self.db.commit()
         await self.db.refresh(todo_to_update)
         return todo_to_update
+    
+    async def delete(self, user_id: int, todo_id: int):
+        todo = await self.get_by_id(user_id, todo_id)
+
+        if not todo:
+            raise HTTPException(status_code=404, detail="Todo not found")
+        
+        await self.db.delete(todo)
+        await self.db.commit()
+
+        return {"message": "Todo deleted successfully"}
+
 
         
 
