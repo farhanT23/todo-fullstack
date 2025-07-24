@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from config import BASE_PATH, app_settings
 
 from modules.user import router as user_router
+from modules.todos import router as todo_router
 from utils import lifespan
 
 app = FastAPI(lifespan=lifespan.lifespan,
@@ -12,6 +13,8 @@ app = FastAPI(lifespan=lifespan.lifespan,
               title=app_settings.app_name)
 
 app.include_router(user_router)
+app.include_router(todo_router)
+
 
 
 
