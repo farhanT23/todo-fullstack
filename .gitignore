@@ -5,3 +5,6 @@ frontend/public/
 frontend/src/assets/react.svg
 __pycache__/
 .vscode/
+frontend/package-lock.json
+frontend/package.json
+.idea/

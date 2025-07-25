@@ -11,7 +11,7 @@ class TodoService:
     async def create(self, user_id: int, todos: schema.TodoCreate):
         
         todo_obj = models.Todo(
-            owner_id=user_id,
+            user_id=user_id,
             title=todos.title,
             is_completed=todos.is_completed,
             priority=todos.priority,            
